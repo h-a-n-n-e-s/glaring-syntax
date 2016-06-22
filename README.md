@@ -2,4 +2,4 @@
 
 Syntax highlighting with glaring colors on black background and no font smoothing.
 
-![A screenshot of your theme](https://f.cloud.github.com/assets/69169/2289498/4c3cb0ec-a009-11e3-8dbd-077ee11741e5.gif)
+![A screenshot of your theme](https://cloud.githubusercontent.com/assets/20040365/16256782/60daa182-388f-11e6-9094-f9c776837547.png)
