@@ -3,7 +3,7 @@
 atom-text-editor, :host {
   -webkit-font-smoothing: none;
   background-color: @black;
-  color: @white;
+  color: @my-off-white;
 
   .wrap-guide {
     background-color: @syntax-wrap-guide-color;
@@ -133,26 +133,30 @@ atom-text-editor .search-results .marker.current-result .region,
 }
 
 .variable {
-  color: @my-light-cyan;
+  color: @white;
 
   &.interpolation {
-    color: darken(@red, 10%);
+    color: @very-light-gray;
   }
 
   &.parameter.function {
-    color: @syntax-text-color;
+    color: @white;
   }
 }
 
 .invalid.illegal {
-  background-color: @red;
-  color: @syntax-background-color;
+  background-color: @my-red;
+  color: @white;
+  &.gnuplot { // Patch for language-gnuplot-atom: Why should e.g. writing '[5:13]' be invalid?
+    background-color: @black;
+  }
 }
 
 .string {
   color: @my-yellow;
-
-
+  &.other.math.tex { // Patch for language-latex bug: it sometimes confuses '$...$' in text mode
+    color: @my-off-white;
+  }
   &.regexp {
     color: @cyan;
 
@@ -169,7 +173,7 @@ atom-text-editor .search-results .marker.current-result .region,
 .punctuation {
   &.definition {
     &.comment {
-      color: @light-gray;
+      color: @my-dark-green;
     }
 
     &.string,
@@ -186,12 +190,17 @@ atom-text-editor .search-results .marker.current-result .region,
 
     &.bold {
       color: @light-orange;
-      font-weight: bold;
+      //font-weight: bold;
     }
 
     &.italic {
       color: @purple;
-      font-style: italic;
+      //font-style: italic;
+    }
+    &.string {
+      &.tex { // Patch for language-latex bug: it sometimes confuses '$...$' in text mode
+        color: @my-red;
+      }
     }
   }
 
@@ -278,8 +287,8 @@ atom-text-editor .search-results .marker.current-result .region,
 
 .markup {
   &.bold {
-    color: @orange;
-    font-weight: bold;
+    color: @my-blue;
+    //font-weight: bold;
   }
 
   &.changed {
@@ -292,7 +301,7 @@ atom-text-editor .search-results .marker.current-result .region,
 
   &.italic {
     color: @purple;
-    font-style: italic;
+    //font-style: italic;
   }
 
   &.heading .punctuation.definition.heading {
@@ -317,7 +326,7 @@ atom-text-editor .search-results .marker.current-result .region,
 }
 
 .source.gfm .markup {
-  -webkit-font-smoothing: auto;
+  -webkit-font-smoothing: none;
   &.heading {
     color: @green;
   }
