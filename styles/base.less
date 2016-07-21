@@ -1,7 +1,6 @@
 @import "syntax-variables";
 
 atom-text-editor, :host {
-  -webkit-font-smoothing: none;
   background-color: @black;
   color: @my-off-white;
 
@@ -63,11 +62,12 @@ atom-text-editor .search-results .marker.current-result .region,
   border: 1px solid @syntax-result-marker-color-selected;
 }
 
+// bracket matcher ----------------------------------------
 .bracket-matcher .region {
-  border-bottom: 1px solid lime;
   position: absolute;
-  border: 1px solid rgba(0, 255, 0, 1);
-  background-color: rgba(0, 255, 0, 0.8);
+  background-color: rgba(0, 255, 0, 0.3);
+  border-bottom: 2px solid rgb(0, 255, 0);
+     border-top: 2px solid rgb(0, 255, 0);
 }
 
 // Why does 'comment' below work for '.source.ruby' but not for '.source.latex'?
@@ -109,7 +109,7 @@ atom-text-editor .search-results .marker.current-result .region,
 }
 
 .storage {
-  color: @my-beige;
+  color: @my-purple;
 }
 
 .constant {
@@ -147,14 +147,16 @@ atom-text-editor .search-results .marker.current-result .region,
 .invalid.illegal {
   background-color: @my-red;
   color: @white;
-  &.gnuplot { // Patch for language-gnuplot-atom: Why should e.g. writing '[5:13]' be invalid?
+  // Patch for gnuplot and latex: Why should e.g. writing '[5:13]' be invalid?
+  &.gnuplot, &.latex {
     background-color: @black;
   }
 }
 
 .string {
   color: @my-yellow;
-  &.other.math.tex { // Patch for language-latex bug: it sometimes confuses '$...$' in text mode
+  // Patch for language-latex bug: it sometimes confuses '$...$' in text mode
+  &.other.math.tex {
     color: @my-off-white;
   }
   &.regexp {
@@ -230,7 +232,6 @@ atom-text-editor .search-results .marker.current-result .region,
   }
   &.name.type {
     color: @light-orange;
-    text-decoration: underline;
   }
 
   &.other.inherited-class {
@@ -246,7 +247,6 @@ atom-text-editor .search-results .marker.current-result .region,
 
   &.name.tag {
     color: @red;
-    text-decoration: underline;
   }
 
   &.other.attribute-name {
@@ -326,7 +326,6 @@ atom-text-editor .search-results .marker.current-result .region,
 }
 
 .source.gfm .markup {
-  -webkit-font-smoothing: none;
   &.heading {
     color: @green;
   }
